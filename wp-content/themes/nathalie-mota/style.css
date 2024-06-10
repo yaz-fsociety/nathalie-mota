@@ -63,7 +63,7 @@ body {
 
 .nav-menu {
     display: flex;
-    gap: 100px; /* Augmenter l'espacement entre les éléments du menu */
+    gap: 40px; /* Augmenter l'espacement entre les éléments du menu */
     align-items: center;
     list-style: none;
     margin: 0;
@@ -81,6 +81,7 @@ body {
     color: var(--color-black);
     text-transform: uppercase;
     text-decoration: none;
+    margin-left: 20px; /* Ajoute un espace entre les éléments */
 }
 
 .nav-menu a:hover {
@@ -131,3 +132,4 @@ p {
     letter-spacing: 0.1em;
     text-align: left;
 }
+
