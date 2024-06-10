@@ -63,7 +63,7 @@ body {
 
 .nav-menu {
     display: flex;
-    gap: 40px; /* Augmenter l'espacement entre les éléments du menu */
+    gap: 60px; /* Augmenter l'espacement entre les éléments du menu */
     align-items: center;
     list-style: none;
     margin: 0;
@@ -77,11 +77,11 @@ body {
 .nav-menu a {
     font-family: 'Space Mono', monospace;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-black);
     text-transform: uppercase;
     text-decoration: none;
-    margin-left: 20px; /* Ajoute un espace entre les éléments */
+    margin-left: 60px; /* Ajoute un espace entre les éléments */
 }
 
 .nav-menu a:hover {
@@ -133,3 +133,42 @@ p {
     text-align: left;
 }
 
+/* Styles pour la hero section */
+.hero-section {
+    width: 100%;
+    max-width: 1440px;
+    height: 962px;
+    position: relative;
+    background: url('path/to/your/image.jpg') no-repeat center center/cover; /* Remplacez par le chemin de votre image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+.hero-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 96px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 142.18px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Styles pour la version mobile */
+@media only screen and (max-width: 768px) {
+    .hero-section {
+        height: auto;
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 27.59px;
+        line-height: 40.86px;
+    }
+}

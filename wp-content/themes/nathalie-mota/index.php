@@ -7,11 +7,10 @@
 </head>
 <body <?php body_class(); ?>>
     <?php get_header(); ?>
-    <div id="content">
-        <h1><?php bloginfo('name'); ?></h1>
-        <p><?php bloginfo('description'); ?></p>
+    <section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">PHOTOGRAPHE EVENT</h1>
     </div>
-    <?php get_footer(); ?>
-    <?php wp_footer(); ?>
-</body>
-</html>
+</section>
+
+<?php get_footer(); ?>
