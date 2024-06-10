@@ -1,19 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Code pour la modale de contact
     var modal = document.getElementById('contactModal');
     var btn = document.getElementById('contactModalButton');
     var span = document.getElementsByClassName('close')[0];
 
-    btn.onclick = function () {
-        modal.style.display = 'block';
+    if (btn) {
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        }
     }
 
-    span.onclick = function () {
-        modal.style.display = 'none';
+    if (span) {
+        span.onclick = function () {
+            modal.style.display = 'none';
+        }
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+    }
+
+    // Code pour le menu mobile
+    var menuToggle = document.querySelector('.menu-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function () {
+            var expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+            mobileMenu.setAttribute('aria-hidden', expanded);
+        });
     }
 });

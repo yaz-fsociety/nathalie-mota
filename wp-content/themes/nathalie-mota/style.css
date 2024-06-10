@@ -10,3 +10,211 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom-theme, responsive, minimal
 Text Domain: nathalie-mota-theme
 */
+
+/* Desktop Styles */
+:root {
+    --color-dark-gray: rgba(49, 49, 68, 1);
+    --color-gray: rgba(196, 196, 196, 1);
+    --color-light-gray-1: rgba(229, 229, 229, 1);
+    --color-light-gray-2: rgba(216, 216, 216, 1);
+    --color-black: rgba(0, 0, 0, 1);
+    --color-red-dark: rgba(224, 0, 0, 1);
+    --color-red-light: rgba(254, 88, 88, 1);
+    --color-pink: rgba(255, 214, 214, 1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-black);
+    background-color: var(--color-light-gray-1);
+}
+
+.header-desktop {
+    background-color: var(--color-dark-gray);
+}
+
+.footer-desktop {
+    background-color: var(--color-gray);
+    color: var(--color-black);
+}
+
+.footer-mobile {
+    background-color: var(--color-light-gray-2);
+    color: var(--color-black);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.site-logo img {
+    height: 50px; /* Ajustez la taille du logo si nécessaire */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-black);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-menu a:hover {
+    color: var(--color-red-dark);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.footer-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-menu a {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-black);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.footer-menu a:hover {
+    color: var(--color-red-dark);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle .menu-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-black);
+    position: relative;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background: var(--color-black);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle .menu-icon::before {
+    top: -8px;
+}
+
+.menu-toggle .menu-icon::after {
+    top: 8px;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon {
+    background: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon::before {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon::after {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-red-dark);
+        color: var(--color-black);
+        z-index: 1000;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .mobile-menu[aria-hidden="false"] {
+        display: block;
+    }
+
+    .mobile-nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mobile-nav-menu a {
+        font-family: 'Space Mono', monospace;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--color-black);
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .mobile-nav-menu a:hover {
+        color: var(--color-red-light);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    animation: modalopen 0.5s ease;
+}
+
+@keyframes modalopen {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
