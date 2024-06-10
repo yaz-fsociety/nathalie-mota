@@ -48,14 +48,22 @@ body {
     padding: 0 20px;
 }
 
-.site-logo img {
+.site-logo {
     width: 216px;
     height: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo img {
+    max-width: 100%;
+    height: auto;
 }
 
 .nav-menu {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .nav-menu a {
