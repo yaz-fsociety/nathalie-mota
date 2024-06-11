@@ -1,3 +1,7 @@
+<!-- Ajoutez ce bouton dans votre page pour ouvrir la modale -->
+<button id="contactModalButton">Contact</button>
+
+<!-- Contenu de contact-modal.php -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>

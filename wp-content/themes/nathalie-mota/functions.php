@@ -20,3 +20,4 @@ function nathalie_mota_setup() {
 add_action('after_setup_theme', 'nathalie_mota_setup');
 ?>
 
+
