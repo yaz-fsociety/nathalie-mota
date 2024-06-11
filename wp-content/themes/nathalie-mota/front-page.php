@@ -4,7 +4,7 @@ get_header();
 ?>
 
 <div class="hero">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/nathalie-11.png" alt="Hero Image">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/hero-section-image.png" alt="Hero Image">
     <h1 class="hero-title">PHOTOGRAPHE EVENT</h1>
 </div>
 
