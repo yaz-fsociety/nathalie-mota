@@ -8,6 +8,7 @@
             ));
             ?>
         </nav>
+        <button id="contactModalButton">Contact</button>
         <p>&copy; <?php echo date('Y'); ?> - <?php bloginfo('name'); ?></p>
     </div>
     <?php wp_footer(); ?>
