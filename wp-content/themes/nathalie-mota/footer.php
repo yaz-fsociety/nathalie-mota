@@ -1,17 +1,18 @@
 <footer class="footer-desktop">
     <div class="footer-container">
-        <nav class="footer-nav">
+        <button id="contactModalButton">Contact</button>
+        <nav>
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'footer',
-                'menu_class' => 'footer-menu',
+                'container' => false,
+                'menu_class' => 'footer-nav',
             ));
             ?>
         </nav>
-        <button id="contactModalButton">Contact</button>
-        <p>&copy; <?php echo date('Y'); ?> - <?php bloginfo('name'); ?></p>
     </div>
-    <?php wp_footer(); ?>
+    <p>&copy; 2024 - Nathalie Mota</p>
 </footer>
+<?php wp_footer(); ?>
 </body>
 </html>

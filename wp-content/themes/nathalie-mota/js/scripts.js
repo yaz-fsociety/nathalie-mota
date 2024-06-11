@@ -6,13 +6,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (btn) {
         btn.onclick = function () {
-            modal.style.display = 'block';
+            if (modal) {
+                modal.style.display = 'block';
+            }
         }
     }
 
     if (span) {
         span.onclick = function () {
-            modal.style.display = 'none';
+            if (modal) {
+                modal.style.display = 'none';
+            }
         }
     }
 
