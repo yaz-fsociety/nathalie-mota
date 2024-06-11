@@ -139,7 +139,7 @@ p {
     max-width: 1440px;
     height: 962px;
     position: relative;
-    background: url('path/to/your/image.jpg') no-repeat center center/cover; /* Remplacez par le chemin de votre image */
+    background: url('wp-content/themes/nathalie-mota/images/nathalie-11.png') no-repeat center center/cover; /* Remplacez par le chemin de votre image */
     display: flex;
     justify-content: center;
     align-items: center;
