@@ -2,7 +2,7 @@
 function nathalie_mota_enqueue_styles() {
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400&display=swap', false);
-    wp_enqueue_style('modal-styles', get_template_directory_uri() . '/nathalie-mota/css/modal.css', array(), false);
+    wp_enqueue_style('modal-styles', get_template_directory_uri() . '/css/modal.css', array(), false);
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
 
