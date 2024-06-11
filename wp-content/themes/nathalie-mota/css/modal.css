@@ -1,3 +1,4 @@
+/* modal.css */
 .modal {
     display: none; 
     position: fixed; 
@@ -14,7 +15,7 @@
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto; 
-    padding: 20px;
+    padding: 0;
     border: 5px solid #000;
     width: 40%; 
     max-width: 600px;
@@ -37,16 +38,14 @@
 }
 
 .modal-header {
-    background: url('<?php echo get_template_directory_uri(); ?>/images/contact-header.png.png') no-repeat center;
+    background: url('../images/contact-header.png') no-repeat center;
     background-size: cover;
     height: 150px;
-    text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 27.59px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 40.86px;
     margin: 0;
+}
+
+.modal-body {
+    padding: 20px;
 }
 
 .wpcf7-form input[type="text"],
@@ -78,3 +77,4 @@
 .wpcf7-form input[type="submit"]:hover {
     background-color: #aaa;
 }
+
