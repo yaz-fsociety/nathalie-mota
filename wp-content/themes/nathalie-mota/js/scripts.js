@@ -1,16 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Document loaded');
     var modal = document.getElementById('contactModal');
-    var btn = document.getElementById('contactModalButton');
+    var footerButton = document.getElementById('contactModalButton');
+    var headerButton = document.getElementById('contactModalHeaderButton');
     var span = document.getElementsByClassName('close')[0];
 
     console.log('Modal:', modal);
-    console.log('Button:', btn);
+    console.log('Footer Button:', footerButton);
+    console.log('Header Button:', headerButton);
     console.log('Close:', span);
 
-    if (btn) {
-        btn.onclick = function () {
-            console.log('Button clicked');
+    if (footerButton) {
+        footerButton.onclick = function () {
+            console.log('Footer button clicked');
+            modal.style.display = 'block';
+        }
+    }
+
+    if (headerButton) {
+        headerButton.onclick = function (event) {
+            event.preventDefault();
+            console.log('Header button clicked');
             modal.style.display = 'block';
         }
     }
@@ -27,3 +37,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+

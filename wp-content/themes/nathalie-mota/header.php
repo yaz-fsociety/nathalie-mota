@@ -9,19 +9,18 @@
 <header class="header-desktop">
     <div class="header-container">
         <div class="site-logo">
-            <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>">
-            </a>
+            <!-- Logo de votre site -->
+            <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Site Logo">
         </div>
-        <nav>
-            <?php
-            wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'menu_class' => 'nav-menu',
-                'container' => false,
-                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            ));
-            ?>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="<?php echo home_url('/about'); ?>">À propos</a></li>
+                <li><a href="<?php echo home_url('/contact'); ?>" id="contactModalHeaderButton">Contact</a></li>
+                <li><a href="<?php echo home_url('/home'); ?>">Accueil</a></li>
+                <li><a href="<?php echo home_url('/categories'); ?>">Catégories</a></li>
+                <li><a href="<?php echo home_url('/formats'); ?>">Formats</a></li>
+                <li><a href="<?php echo home_url('/sort'); ?>">Trier par</a></li>
+            </ul>
         </nav>
     </div>
 </header>
