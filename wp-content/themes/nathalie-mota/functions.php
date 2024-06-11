@@ -1,21 +1,56 @@
-<?php
-function nathalie_mota_enqueue_styles() {
-    wp_enqueue_style('style', get_stylesheet_uri());
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400&display=swap', false);
-    wp_enqueue_style('modal-styles', get_template_directory_uri() . '/css/modal.css', array(), false);
-}
-add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
-
-function nathalie_mota_enqueue_scripts() {
-    wp_enqueue_script('modal-script', get_template_directory_uri() . '/js/scripts.js', array(), false, true);
-}
-add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
-
-function nathalie_mota_setup() {
-    register_nav_menus(array(
-        'primary' => __('Primary Menu', 'nathalie-mota-theme'),
-        'footer' => __('Footer Menu', 'nathalie-mota-theme'),
+// Register Custom API Routes
+function nathalie_mota_register_api_routes() {
+    register_rest_route('nathalie-mota/v1', '/photos', array(
+        'methods' => 'GET',
+        'callback' => 'nathalie_mota_get_photos',
+        'permission_callback' => '__return_true'
     ));
 }
-add_action('after_setup_theme', 'nathalie_mota_setup');
-?>
+add_action('rest_api_init', 'nathalie_mota_register_api_routes');
+
+function nathalie_mota_get_photos($data) {
+    $paged = isset($data['page']) ? $data['page'] : 1;
+    $category = isset($data['category']) ? $data['category'] : '';
+    $format = isset($data['format']) ? $data['format'] : '';
+    $order = isset($data['sort']) ? $data['sort'] : 'desc';
+
+    $args = array(
+        'post_type' => 'attachment',
+        'post_status' => 'inherit',
+        'posts_per_page' => 8,
+        'paged' => $paged,
+        'orderby' => 'date',
+        'order' => $order,
+    );
+
+    if ($category) {
+        $args['category_name'] = $category;
+    }
+
+    if ($format) {
+        $args['meta_query'] = array(
+            array(
+                'key' => 'format',
+                'value' => $format,
+                'compare' => '='
+            )
+        );
+    }
+
+    $query = new WP_Query($args);
+    $photos = array();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $photos[] = array(
+                'title' => get_the_title(),
+                'source_url' => wp_get_attachment_url(get_the_ID())
+            );
+        }
+    }
+
+    wp_reset_postdata();
+    return $photos;
+}
+
