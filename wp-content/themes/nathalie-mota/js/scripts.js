@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Document loaded');
-    
-    // Code pour la modale de contact
     var modal = document.getElementById('contactModal');
     var btn = document.getElementById('contactModalButton');
     var span = document.getElementsByClassName('close')[0];
