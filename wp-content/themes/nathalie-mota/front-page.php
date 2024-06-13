@@ -5,7 +5,6 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-
 <div class="hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero-section-image.png');">
     <h1 class="hero-title">PHOTOGRAPHE EVENT</h1>
 </div>
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const photoElement = document.createElement('div');
                 photoElement.classList.add('photo');
                 photoElement.innerHTML = `
-                    <img src="${photo.source_url}" alt="${photo.title.rendered}">
+                    <img src="${photo.source_url}" alt="${photo.title}">
                     <div class="photo-overlay">
                         <a href="${photo.source_url}" class="view-photo">👁️</a>
                         <a href="${photo.source_url}" class="full-screen">🔍</a>
@@ -102,4 +101,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php get_footer(); ?>
-

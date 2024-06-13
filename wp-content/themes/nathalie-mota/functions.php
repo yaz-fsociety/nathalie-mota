@@ -50,25 +50,27 @@ function nathalie_mota_get_photos($data) {
     $order = isset($data['sort']) ? $data['sort'] : 'desc';
 
     $args = array(
-        'post_type' => 'attachment',
-        'post_status' => 'inherit',
+        'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $paged,
-        'orderby' => 'date',
+        'orderby' => 'meta_value',
+        'meta_key' => 'date_cliche',
         'order' => $order,
     );
 
     if ($category) {
-        $args['category_name'] = $category;
+        $args['tax_query'][] = array(
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => $category
+        );
     }
 
     if ($format) {
-        $args['meta_query'] = array(
-            array(
-                'key' => 'format',
-                'value' => $format,
-                'compare' => '='
-            )
+        $args['tax_query'][] = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format
         );
     }
 
@@ -80,7 +82,8 @@ function nathalie_mota_get_photos($data) {
             $query->the_post();
             $photos[] = array(
                 'title' => get_the_title(),
-                'source_url' => wp_get_attachment_url(get_the_ID())
+                'source_url' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'date' => get_field('date_cliche')
             );
         }
     }
@@ -89,5 +92,3 @@ function nathalie_mota_get_photos($data) {
     return $photos;
 }
 ?>
-
-
