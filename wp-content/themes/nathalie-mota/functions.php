@@ -1,4 +1,39 @@
-// Register Custom API Routes
+<?php
+// Functions.php
+
+// Enregistrer les menus de navigation
+function nathalie_mota_register_menus() {
+    register_nav_menus(
+        array(
+            'primary-menu' => __( 'Primary Menu', 'nathalie-mota-theme' ),
+            'footer-menu' => __( 'Footer Menu', 'nathalie-mota-theme' )
+        )
+    );
+}
+add_action( 'init', 'nathalie_mota_register_menus' );
+
+// Ajouter les scripts et les styles
+function nathalie_mota_enqueue_styles() {
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
+    wp_enqueue_style( 'modal-style', get_template_directory_uri() . '/css/modal.css' );
+}
+
+function nathalie_mota_enqueue_scripts() {
+    wp_enqueue_script( 'script', get_template_directory_uri() . '/js/scripts.js', array(), '1.0', true );
+    wp_enqueue_script( 'gallery-script', get_template_directory_uri() . '/js/gallery.js', array('jquery'), '1.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'nathalie_mota_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts' );
+
+// Support des fonctionnalités du thème
+function nathalie_mota_theme_setup() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'nathalie_mota_theme_setup' );
+
+// Register REST API Routes
 function nathalie_mota_register_api_routes() {
     register_rest_route('nathalie-mota/v1', '/photos', array(
         'methods' => 'GET',
@@ -53,4 +88,6 @@ function nathalie_mota_get_photos($data) {
     wp_reset_postdata();
     return $photos;
 }
+?>
+
 

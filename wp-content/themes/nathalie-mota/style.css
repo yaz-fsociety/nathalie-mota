@@ -11,8 +11,6 @@ Tags: custom-theme, responsive, minimal
 Text Domain: nathalie-mota-theme
 */
 
-/* Desktop Styles */
-
 :root {
     --color-dark-gray: rgba(49, 49, 68, 1);
     --color-gray: rgba(196, 196, 196, 1);
@@ -63,7 +61,7 @@ body {
 
 .nav-menu {
     display: flex;
-    gap: 60px; /* Augmenter l'espacement entre les éléments du menu */
+    gap: 60px;
     align-items: center;
     list-style: none;
     margin: 0;
@@ -81,14 +79,13 @@ body {
     color: var(--color-black);
     text-transform: uppercase;
     text-decoration: none;
-    margin-left: 60px; /* Ajoute un espace entre les éléments */
+    margin-left: 60px;
 }
 
 .nav-menu a:hover {
     color: var(--color-red-dark);
 }
 
-/* Styles pour les titres et paragraphes */
 h1 {
     font-family: 'Space Mono', monospace;
     font-size: 96px;
@@ -133,50 +130,6 @@ p {
     text-align: left;
 }
 
-/* Styles pour la hero section */
-.hero-section {
-    width: 100%;
-    max-width: 1440px;
-    height: 962px;
-    position: relative;
-    background: url('<?php echo get_template_directory_uri(); ?>/images/nathalie-11.png') no-repeat center center/cover; /* Remplacez par le chemin de votre image */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-content {
-    text-align: center;
-    color: rgba(255, 255, 255, 1);
-}
-
-.hero-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 96px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 142.18px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-/* Styles pour la version mobile */
-@media only screen and (max-width: 768px) {
-    .hero-section {
-        height: auto;
-        padding: 20px;
-    }
-
-    .hero-title {
-        font-size: 27.59px;
-        line-height: 40.86px;
-    }
-}
-
-.home .entry-title {
-    display: none;
-}
-
 /* Hero Section */
 .hero {
     width: 100%;
@@ -185,7 +138,9 @@ p {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: rgba(255, 255, 255, 1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero img {
@@ -202,12 +157,11 @@ p {
     font-weight: 700;
     line-height: 142.18px;
     text-align: left;
-    color: transparent; /* Rendre le remplissage du texte transparent */
-    -webkit-text-stroke-width: 4px; /* Définir la largeur de la bordure */
-    -webkit-text-stroke-color: white; /* Définir la couleur de la bordure */
+    color: transparent; 
+    -webkit-text-stroke-width: 4px; 
+    -webkit-text-stroke-color: white; 
 }
 
-/* Contenu de la page d'accueil */
 .content {
     padding: 20px;
 }
@@ -232,7 +186,6 @@ p {
     height: auto;
 }
 
-/* Contact Form 7 Styling */
 .wpcf7-form input[type="text"],
 .wpcf7-form input[type="email"],
 .wpcf7-form textarea {
@@ -267,6 +220,52 @@ p {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.filter-container select {
+    width: 260px;
+    height: 42px;
+    padding: 11px 24px;
+    border: 1.3px solid var(--color-light-gray-2);
+    border-radius: 8px;
+    background: white;
+    color: var(--color-dark-gray);
+    appearance: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    position: relative;
+    box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.filter-container select:hover {
+    background: rgba(255, 214, 214, 1);
+}
+
+.filter-container select option:hover {
+    background: rgba(255, 214, 214, 1);
+}
+
+.filter-container select option:checked {
+    background: rgba(224, 0, 0, 1);
+}
+
+.filter-container select::after {
+    content: url('<?php echo get_template_directory_uri(); ?>/images/chevron-down-s.svg');
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.filter-container select:focus::after {
+    content: url('<?php echo get_template_directory_uri(); ?>/images/chevron-up-s.svg');
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .gallery-container {

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const formatFilter = document.getElementById('format-filter');
     const sortFilter = document.getElementById('sort-filter');
     const loadMoreButton = document.getElementById('load-more');
-    const galleryContainer = document.getElementById('gallery-container');
+    const galleryContainer = document.getElementById('photo-gallery');
 
     let page = 1;
 
@@ -126,6 +126,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-

@@ -5,8 +5,8 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<div class="hero">
-    <img src="<?php echo esc_url(get_template_directory_uri() . '/images/hero-section-image.jpg'); ?>" alt="Hero Image">
+
+<div class="hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero-section-image.png');">
     <h1 class="hero-title">PHOTOGRAPHE EVENT</h1>
 </div>
 
@@ -102,3 +102,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php get_footer(); ?>
+
