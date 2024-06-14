@@ -56,20 +56,19 @@ document.addEventListener('DOMContentLoaded', function () {
             sort,
         });
 
-        fetch(`/wp-json/custom/v1/photos?${query.toString()}`)
+        fetch(`/wp-json/nathalie-mota/v1/photos?${query.toString()}`)
             .then(response => response.json())
             .then(data => {
                 if (reset) {
                     galleryContainer.innerHTML = '';
                 }
-                data.photos.forEach(photo => {
+                data.forEach(photo => {
                     const photoElement = document.createElement('div');
                     photoElement.classList.add('photo');
                     photoElement.innerHTML = `
-                        <img src="${photo.thumbnail}" alt="${photo.title}">
+                        <img src="${photo.source_url}" alt="${photo.title}">
                         <div class="photo-overlay">
-                            <a href="${photo.full}" class="photo-fullscreen">🔍</a>
-                            <a href="${photo.info}" class="photo-info">ℹ️</a>
+                            <a href="${photo.source_url}" class="photo-fullscreen">🔍</a>
                         </div>
                     `;
                     galleryContainer.appendChild(photoElement);
