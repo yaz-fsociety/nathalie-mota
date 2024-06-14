@@ -1,4 +1,6 @@
 <?php
+// Functions.php
+
 // Enregistrer les menus de navigation
 function nathalie_mota_register_menus() {
     register_nav_menus(
@@ -35,24 +37,16 @@ add_action( 'after_setup_theme', 'nathalie_mota_theme_setup' );
 add_action('rest_api_init', function() {
     register_rest_route('custom/v1', '/photos', array(
         'methods' => 'GET',
-        'callback' => 'fetch_photos_callback',
+        'callback' => 'nathalie_mota_get_photos',
     ));
 
     register_rest_route('nathalie-mota/v1', '/photos', array(
         'methods' => 'GET',
-        'callback' => 'fetch_nathalie_mota_photos_callback',
+        'callback' => 'nathalie_mota_get_photos',
     ));
 });
 
-// Fonction de rappel pour récupérer les photos
-function fetch_photos_callback($data) {
-    return new WP_REST_Response(nathalie_mota_get_photos($data), 200);
-}
-
-function fetch_nathalie_mota_photos_callback($data) {
-    return new WP_REST_Response(nathalie_mota_get_photos($data), 200);
-}
-
+// Function to fetch photos
 function nathalie_mota_get_photos($data) {
     $paged = isset($data['page']) ? $data['page'] : 1;
     $category = isset($data['category']) ? $data['category'] : '';
@@ -92,7 +86,8 @@ function nathalie_mota_get_photos($data) {
             $query->the_post();
             $photos[] = array(
                 'title' => get_the_title(),
-                'source_url' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'),
+                'full' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
                 'date' => get_field('date_cliche')
             );
         }
@@ -101,8 +96,5 @@ function nathalie_mota_get_photos($data) {
     wp_reset_postdata();
     return $photos;
 }
-
-if (!defined('ACF_DEV')) {
-    define('ACF_DEV', true);
-}
 ?>
+

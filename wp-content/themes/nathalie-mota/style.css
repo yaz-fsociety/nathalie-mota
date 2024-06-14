@@ -383,3 +383,12 @@ p {
     height: 42px;
    
 }
+
+/* Utilisez get_template_directory_uri() pour définir les chemins des images */
+.icon-chevron-down {
+    background-image: url('<?php echo get_template_directory_uri(); ?>/images/icons/chevron-down-s.svg');
+}
+
+.icon-chevron-down-alt {
+    background-image: url('<?php echo get_template_directory_uri(); ?>/images/chevron-down-s.svg');
+}
