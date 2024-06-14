@@ -35,19 +35,14 @@ add_action( 'after_setup_theme', 'nathalie_mota_theme_setup' );
 
 // Register REST API routes
 add_action('rest_api_init', function() {
-    register_rest_route('custom/v1', '/photos', array(
-        'methods' => 'GET',
-        'callback' => 'nathalie_mota_get_photos',
-    ));
-
     register_rest_route('nathalie-mota/v1', '/photos', array(
         'methods' => 'GET',
-        'callback' => 'nathalie_mota_get_photos',
+        'callback' => 'fetch_photos_callback',
     ));
 });
 
-// Function to fetch photos
-function nathalie_mota_get_photos($data) {
+// Register API callback
+function fetch_photos_callback($data) {
     $paged = isset($data['page']) ? $data['page'] : 1;
     $category = isset($data['category']) ? $data['category'] : '';
     $format = isset($data['format']) ? $data['format'] : '';
@@ -95,6 +90,10 @@ function nathalie_mota_get_photos($data) {
 
     wp_reset_postdata();
     return $photos;
+}
+
+if (!defined('ACF_DEV')) {
+    define('ACF_DEV', true);
 }
 ?>
 

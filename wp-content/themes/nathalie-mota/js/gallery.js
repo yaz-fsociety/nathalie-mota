@@ -21,12 +21,12 @@ jQuery(document).ready(function ($) {
                 data.forEach(function (photo) {
                     $('#photo-gallery').append(`
                         <div class="photo-card">
-                            <img src="${photo.source_url}" alt="${photo.title}">
+                            <img src="${photo.thumbnail}" alt="${photo.title}">
                             <div class="photo-info">
-                                <a href="${photo.source_url}" class="lightbox-link">
+                                <a href="${photo.full}" class="lightbox-link">
                                     <span class="icon-eye"></span>
                                 </a>
-                                <a href="${photo.source_url}" class="fullscreen-link">
+                                <a href="${photo.full}" class="fullscreen-link">
                                     <span class="icon-fullscreen"></span>
                                 </a>
                             </div>
@@ -34,8 +34,8 @@ jQuery(document).ready(function ($) {
                     `);
                 });
             },
-            error: function (xhr, status, error) {
-                console.error('Failed to fetch photos:', error);
+            error: function (error) {
+                console.error('Failed to fetch photos:', error.responseText);
             }
         });
     }

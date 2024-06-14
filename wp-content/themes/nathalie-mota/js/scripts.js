@@ -57,7 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         fetch(`/wp-json/nathalie-mota/v1/photos?${query.toString()}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (reset) {
                     galleryContainer.innerHTML = '';
@@ -66,19 +71,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     const photoElement = document.createElement('div');
                     photoElement.classList.add('photo');
                     photoElement.innerHTML = `
-                        <img src="${photo.source_url}" alt="${photo.title}">
+                        <img src="${photo.thumbnail}" alt="${photo.title}">
                         <div class="photo-overlay">
-                            <a href="${photo.source_url}" class="photo-fullscreen">🔍</a>
+                            <a href="${photo.full}" class="photo-fullscreen">🔍</a>
+                            <a href="${photo.full}" class="photo-info">ℹ️</a>
                         </div>
                     `;
                     galleryContainer.appendChild(photoElement);
                 });
 
-                if (!data.hasMore) {
+                if (!data.length) {
                     loadMoreButton.style.display = 'none';
                 } else {
                     loadMoreButton.style.display = 'block';
                 }
+            })
+            .catch(error => {
+                console.error('Failed to fetch photos:', error.message);
             });
     }
 
