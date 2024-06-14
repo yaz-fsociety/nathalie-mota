@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Gestion des filtres et du tri pour la galerie
     const categoryFilter = document.getElementById('category-filter');
     const formatFilter = document.getElementById('format-filter');
     const sortFilter = document.getElementById('sort-filter');
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`/wp-json/nathalie-mota/v1/photos?${query.toString()}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error('HTTP error! status: ' + response.status);
                 }
                 return response.json();
             })
@@ -71,16 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     const photoElement = document.createElement('div');
                     photoElement.classList.add('photo');
                     photoElement.innerHTML = `
-                        <img src="${photo.thumbnail}" alt="${photo.title}">
+                        <img src="${photo.source_url}" alt="${photo.title}">
                         <div class="photo-overlay">
-                            <a href="${photo.full}" class="photo-fullscreen">🔍</a>
-                            <a href="${photo.full}" class="photo-info">ℹ️</a>
+                            <a href="${photo.source_url}" class="photo-fullscreen">🔍</a>
+                            <a href="${photo.source_url}" class="photo-info">ℹ️</a>
                         </div>
                     `;
                     galleryContainer.appendChild(photoElement);
                 });
 
-                if (!data.length) {
+                if (!data.hasMore) {
                     loadMoreButton.style.display = 'none';
                 } else {
                     loadMoreButton.style.display = 'block';
@@ -113,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchPhotos();
 
-    // Lightbox
     document.body.addEventListener('click', function(event) {
         if (event.target.classList.contains('photo-fullscreen')) {
             event.preventDefault();
