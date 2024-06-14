@@ -384,11 +384,21 @@ p {
    
 }
 
-/* Utilisez get_template_directory_uri() pour définir les chemins des images */
+/* Exemple de CSS pour les chevrons */
 .icon-chevron-down {
-    background-image: url('<?php echo get_template_directory_uri(); ?>/images/icons/chevron-down-s.svg');
+    background-image: url('/wp-content/themes/nathalie-mota/images/icon-chevron-down.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.icon-chevron-down-alt {
-    background-image: url('<?php echo get_template_directory_uri(); ?>/images/chevron-down-s.svg');
+.icon-chevron-up {
+    background-image: url('/wp-content/themes/nathalie-mota/images/icon-chevron-up.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
